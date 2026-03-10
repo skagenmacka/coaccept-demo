@@ -1,0 +1,14 @@
+{
+  "name": "coaccept-example",
+  "version": "1.0.0",
+  "description": "Example use of the CoAccept API",
+  "author": "Alexander Nystedt",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
