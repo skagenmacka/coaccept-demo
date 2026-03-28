@@ -49,7 +49,7 @@ const defaultHeaders = {
     body: JSON.stringify({
       name: 'Rent',
       price: 100000, // 1000,00 SEK
-      vat: 0,         // 0% 
+      vat: 0,        // 0% 
 
       quantity: 1 // optional
     })
