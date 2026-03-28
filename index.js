@@ -6,10 +6,32 @@ const defaultHeaders = {
 };
 
 (async () => {
+  // create a new customer
+  const customerRes = await fetch(`${process.env.COACCEPT_API_URL}/customers`, {
+    method: 'POST',
+    headers: defaultHeaders,
+    body: JSON.stringify({
+      name: process.env.CUSTOMER_NAME,
+      email: process.env.CUSTOMER_EMAIL
+    })
+  });
+
+  if (!customerRes.ok || customerRes.status !== 201) {
+    console.error(customerRes.statusText);
+    console.error(await customerRes.text());
+    return;
+  }
+
+  const customer = await customerRes.json();
+  console.log(customer);
+
   // create invoice
   const createRes = await fetch(`${process.env.COACCEPT_API_URL}/invoices`, {
     method: 'POST',
-    headers: defaultHeaders
+    headers: defaultHeaders,
+    body: JSON.stringify({
+      customer_id: customer.data.id
+    })
   });
 
   if (!createRes.ok || createRes.status !== 201) {
